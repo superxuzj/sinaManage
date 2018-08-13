@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.boliangshenghe.sina.repository.WeiboSourceMapper" >
+  <resultMap id="BaseResultMap" type="com.boliangshenghe.sina.entity.WeiboSource" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="mid" property="mid" jdbcType="VARCHAR" />
+    <result column="uid" property="uid" jdbcType="VARCHAR" />
+    <result column="created_at" property="createdAt" jdbcType="VARCHAR" />
+    <result column="source_id" property="sourceId" jdbcType="VARCHAR" />
+    <result column="filter" property="filter" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="mentions" property="mentions" jdbcType="VARCHAR" />
+    <result column="blog_url" property="blogUrl" jdbcType="VARCHAR" />
+    <result column="parent_rt_id_db" property="parentRtIdDb" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, mid, uid, created_at, source_id, filter, content, mentions, blog_url, parent_rt_id_db
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_weibosource
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_weibosource
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.boliangshenghe.sina.entity.WeiboSource" >
+    insert into t_weibosource (ID, mid, uid, 
+      created_at, source_id, filter, 
+      content, mentions, blog_url, 
+      parent_rt_id_db)
+    values (#{id,jdbcType=INTEGER}, #{mid,jdbcType=VARCHAR}, #{uid,jdbcType=VARCHAR}, 
+      #{createdAt,jdbcType=VARCHAR}, #{sourceId,jdbcType=VARCHAR}, #{filter,jdbcType=VARCHAR}, 
+      #{content,jdbcType=VARCHAR}, #{mentions,jdbcType=VARCHAR}, #{blogUrl,jdbcType=VARCHAR}, 
+      #{parentRtIdDb,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.boliangshenghe.sina.entity.WeiboSource" >
+    insert into t_weibosource
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="mid != null" >
+        mid,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="createdAt != null" >
+        created_at,
+      </if>
+      <if test="sourceId != null" >
+        source_id,
+      </if>
+      <if test="filter != null" >
+        filter,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="mentions != null" >
+        mentions,
+      </if>
+      <if test="blogUrl != null" >
+        blog_url,
+      </if>
+      <if test="parentRtIdDb != null" >
+        parent_rt_id_db,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="mid != null" >
+        #{mid,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="createdAt != null" >
+        #{createdAt,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceId != null" >
+        #{sourceId,jdbcType=VARCHAR},
+      </if>
+      <if test="filter != null" >
+        #{filter,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="mentions != null" >
+        #{mentions,jdbcType=VARCHAR},
+      </if>
+      <if test="blogUrl != null" >
+        #{blogUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="parentRtIdDb != null" >
+        #{parentRtIdDb,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.boliangshenghe.sina.entity.WeiboSource" >
+    update t_weibosource
+    <set >
+      <if test="mid != null" >
+        mid = #{mid,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="createdAt != null" >
+        created_at = #{createdAt,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceId != null" >
+        source_id = #{sourceId,jdbcType=VARCHAR},
+      </if>
+      <if test="filter != null" >
+        filter = #{filter,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="mentions != null" >
+        mentions = #{mentions,jdbcType=VARCHAR},
+      </if>
+      <if test="blogUrl != null" >
+        blog_url = #{blogUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="parentRtIdDb != null" >
+        parent_rt_id_db = #{parentRtIdDb,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.boliangshenghe.sina.entity.WeiboSource" >
+    update t_weibosource
+    set mid = #{mid,jdbcType=VARCHAR},
+      uid = #{uid,jdbcType=VARCHAR},
+      created_at = #{createdAt,jdbcType=VARCHAR},
+      source_id = #{sourceId,jdbcType=VARCHAR},
+      filter = #{filter,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      mentions = #{mentions,jdbcType=VARCHAR},
+      blog_url = #{blogUrl,jdbcType=VARCHAR},
+      parent_rt_id_db = #{parentRtIdDb,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

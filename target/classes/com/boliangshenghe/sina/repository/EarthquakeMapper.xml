@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.boliangshenghe.sina.repository.EarthquakeMapper" >
+  <resultMap id="BaseResultMap" type="com.boliangshenghe.sina.entity.Earthquake" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="eqname" property="eqname" jdbcType="VARCHAR" />
+    <result column="eqid" property="eqid" jdbcType="VARCHAR" />
+    <result column="location" property="location" jdbcType="VARCHAR" />
+    <result column="magnitude" property="magnitude" jdbcType="VARCHAR" />
+    <result column="longitude" property="longitude" jdbcType="VARCHAR" />
+    <result column="latitude" property="latitude" jdbcType="VARCHAR" />
+    <result column="eqtime" property="eqtime" jdbcType="VARCHAR" />
+    <result column="depth" property="depth" jdbcType="VARCHAR" />
+    <result column="earthtype" property="earthtype" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="creator" property="creator" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, eqname, eqid, location, magnitude, longitude, latitude, eqtime, depth, earthtype, 
+    type, status, createtime, creator, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_earthquake
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_earthquake
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.boliangshenghe.sina.entity.Earthquake" >
+    insert into t_earthquake (ID, eqname, eqid, 
+      location, magnitude, longitude, 
+      latitude, eqtime, depth, 
+      earthtype, type, status, 
+      createtime, creator, remark
+      )
+    values (#{id,jdbcType=INTEGER}, #{eqname,jdbcType=VARCHAR}, #{eqid,jdbcType=VARCHAR}, 
+      #{location,jdbcType=VARCHAR}, #{magnitude,jdbcType=VARCHAR}, #{longitude,jdbcType=VARCHAR}, 
+      #{latitude,jdbcType=VARCHAR}, #{eqtime,jdbcType=VARCHAR}, #{depth,jdbcType=VARCHAR}, 
+      #{earthtype,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{creator,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.boliangshenghe.sina.entity.Earthquake" >
+    insert into t_earthquake
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="eqname != null" >
+        eqname,
+      </if>
+      <if test="eqid != null" >
+        eqid,
+      </if>
+      <if test="location != null" >
+        location,
+      </if>
+      <if test="magnitude != null" >
+        magnitude,
+      </if>
+      <if test="longitude != null" >
+        longitude,
+      </if>
+      <if test="latitude != null" >
+        latitude,
+      </if>
+      <if test="eqtime != null" >
+        eqtime,
+      </if>
+      <if test="depth != null" >
+        depth,
+      </if>
+      <if test="earthtype != null" >
+        earthtype,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="eqname != null" >
+        #{eqname,jdbcType=VARCHAR},
+      </if>
+      <if test="eqid != null" >
+        #{eqid,jdbcType=VARCHAR},
+      </if>
+      <if test="location != null" >
+        #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="magnitude != null" >
+        #{magnitude,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null" >
+        #{longitude,jdbcType=VARCHAR},
+      </if>
+      <if test="latitude != null" >
+        #{latitude,jdbcType=VARCHAR},
+      </if>
+      <if test="eqtime != null" >
+        #{eqtime,jdbcType=VARCHAR},
+      </if>
+      <if test="depth != null" >
+        #{depth,jdbcType=VARCHAR},
+      </if>
+      <if test="earthtype != null" >
+        #{earthtype,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.boliangshenghe.sina.entity.Earthquake" >
+    update t_earthquake
+    <set >
+      <if test="eqname != null" >
+        eqname = #{eqname,jdbcType=VARCHAR},
+      </if>
+      <if test="eqid != null" >
+        eqid = #{eqid,jdbcType=VARCHAR},
+      </if>
+      <if test="location != null" >
+        location = #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="magnitude != null" >
+        magnitude = #{magnitude,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null" >
+        longitude = #{longitude,jdbcType=VARCHAR},
+      </if>
+      <if test="latitude != null" >
+        latitude = #{latitude,jdbcType=VARCHAR},
+      </if>
+      <if test="eqtime != null" >
+        eqtime = #{eqtime,jdbcType=VARCHAR},
+      </if>
+      <if test="depth != null" >
+        depth = #{depth,jdbcType=VARCHAR},
+      </if>
+      <if test="earthtype != null" >
+        earthtype = #{earthtype,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.boliangshenghe.sina.entity.Earthquake" >
+    update t_earthquake
+    set eqname = #{eqname,jdbcType=VARCHAR},
+      eqid = #{eqid,jdbcType=VARCHAR},
+      location = #{location,jdbcType=VARCHAR},
+      magnitude = #{magnitude,jdbcType=VARCHAR},
+      longitude = #{longitude,jdbcType=VARCHAR},
+      latitude = #{latitude,jdbcType=VARCHAR},
+      eqtime = #{eqtime,jdbcType=VARCHAR},
+      depth = #{depth,jdbcType=VARCHAR},
+      earthtype = #{earthtype,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      creator = #{creator,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
